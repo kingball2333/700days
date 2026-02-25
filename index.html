@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雨丝的700天寻宝奇游</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #ffe6f0 0%, #ffc1e3 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #d81b60;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(216, 27, 96, 0.2);
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        h1 { font-size: 24px; margin-bottom: 20px; color: #c2185b; }
+        p { font-size: 16px; line-height: 1.6; margin-bottom: 20px; }
+        
+        /* 图片展示区样式 - 大图模式 */
+        .riddle-img {
+            width: 100%;
+            max-width: 280px; 
+            border-radius: 10px;
+            border: 2px dashed #ff80ab;
+            margin: 10px auto; 
+            display: block;
+            object-fit: cover;
+        }
+        .gift-img {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 15px;
+            border: 4px solid #ff4081;
+            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+            margin: 20px auto;
+            display: block;
+        }
+        
+        /* 关卡容器排版 */
+        .puzzle-item {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            background: #fff0f5;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .puzzle-item input {
+            width: 180px; 
+            padding: 10px;
+            border: 2px solid #ff80ab;
+            border-radius: 8px;
+            font-size: 18px;
+            outline: none;
+            text-align: center;
+            margin-top: 10px; 
+            transition: 0.3s;
+        }
+        .puzzle-item input:focus { border-color: #c2185b; }
+        
+        /* 全局通用输入框 */
+        input.general-input {
+            width: 80%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #ff80ab;
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+        }
+        input.general-input:focus { border-color: #c2185b; }
+
+        button {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(255, 64, 129, 0.3);
+            margin-top: 10px;
+        }
+        button:hover { background-color: #c2185b; transform: translateY(-2px); }
+        .hidden { display: none; }
+        .error-msg { color: red; font-size: 14px; margin-bottom: 15px; display: none; }
+        .reward-icon { font-size: 60px; margin: 10px 0; }
+        
+        /* 文字提示框 */
+        .text-hint-box {
+            background: #fff0f5;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 16px;
+            color: #880e4f;
+            border-left: 5px solid #ff4081;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 序章 -->
+    <div id="stage-intro">
+        <h1>✨ 欢迎来到秘密基地 ✨</h1>
+        <p>亲爱的<strong>黄雨丝</strong>小朋友：<br><br>今天是我们的第700天纪念日！我在这里为你藏了两份特别的宝藏。<br><br>准备好接受李嘉俊的爱的考验，开启寻宝之旅了吗？</p>
+        <button onclick="nextStage('stage-intro', 'stage-1')">准备好了，出发！</button>
+    </div>
+
+    <!-- 第一关：神兽密码锁 -->
+    <div id="stage-1" class="hidden">
+        <h1>🔐 第一关：神兽密码锁</h1>
+        <p>观察下方的图片，解开三只神兽对应的数字密码，打开第一个宝箱！</p>
+        
+        <div class="puzzle-item">
+            <img src="riddle_yang.jpg" alt="小羊谜题" class="riddle-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'150\'><rect width=\'280\' height=\'150\' fill=\'%23ffb6c1\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'20\'>小羊谜题图</text></svg>'">
+            <input type="number" id="ans-yang" placeholder="请输入密码">
+        </div>
+        
+        <div class="puzzle-item">
+            <img src="riddle_gou.jpg" alt="小狗谜题" class="riddle-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'150\'><rect width=\'280\' height=\'150\' fill=\'%23ffb6c1\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'20\'>小狗谜题图</text></svg>'">
+            <input type="number" id="ans-gou" placeholder="请输入密码">
+        </div>
+
+        <div class="puzzle-item">
+            <img src="riddle_hu.jpg" alt="小虎谜题" class="riddle-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'150\'><rect width=\'280\' height=\'150\' fill=\'%23ffb6c1\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'20\'>小虎谜题图</text></svg>'">
+            <input type="number" id="ans-hu" placeholder="请输入密码">
+        </div>
+
+        <div class="error-msg" id="error-1">密码好像不对哦，再仔细算算看！</div>
+        <button onclick="checkStage1()">解锁宝箱</button>
+    </div>
+
+    <!-- 第一关：奖励 -->
+    <div id="reward-1" class="hidden">
+        <h1>🎉 第一关通关！</h1>
+        <div class="reward-icon">💍</div>
+        <p>叮！恭喜解锁新年奖励：<br><strong>【羊狗虎三吊坠银手链】</strong>！</p>
+        <p>愿这三只小可爱替我天天守护着你！<br><span style="font-size: 14px; color: #888;">(快去找嘉俊领取实物吧！)</span></p>
+        <button onclick="nextStage('reward-1', 'stage-2')">继续寻找终极宝藏</button>
+    </div>
+
+    <!-- 第二关：终极考验 阶段1 (图片四位数字) -->
+    <div id="stage-2" class="hidden">
+        <h1>🧸 终极考验 (1/3)：神秘图纸</h1>
+        <p>带着第一份惊喜，你来到了终极宝箱前。<br>宝箱上贴着一张神秘的图纸，解开它，获取4位数字密码。</p>
+        
+        <div class="puzzle-item">
+            <img src="riddle_bear.jpg" alt="神秘图纸" class="riddle-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'150\'><rect width=\'280\' height=\'150\' fill=\'%23ffb6c1\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'20\'>这里放终极谜题图</text></svg>'">
+            <input type="number" id="ans-stage2" placeholder="输入4位数字" maxlength="4">
+        </div>
+
+        <div class="error-msg" id="error-2">密码不对哦，再观察一下图纸~</div>
+        <button onclick="checkStage2()">验证密码</button>
+    </div>
+
+    <!-- 第三关：终极考验 阶段2 (线下现实互动) -->
+    <div id="stage-3" class="hidden">
+        <h1>🏃‍♀️ 终极考验 (2/3)：现实任务</h1>
+        <p>密码正确！但宝箱还有一层指纹锁，需要你在现实中完成任务才能获取终极四字密码。</p>
+        
+        <div class="text-hint-box">
+            <!-- 嘉俊，这里的任务文字你可以自己改！ -->
+            <strong>📍 任务提示：</strong><br>
+            请放下手机，去给面前的李嘉俊一个大大的拥抱，并对他说“七百天快乐”。他会偷偷把四字密码告诉你哦！
+        </div>
+
+        <input type="text" id="ans-stage3" class="general-input" placeholder="请输入四字密码" maxlength="4">
+        <div class="error-msg" id="error-3">密码不对哦，是不是任务没完成到位呀？</div>
+        <button onclick="checkStage3()">解锁指纹锁</button>
+    </div>
+
+    <!-- 第四关：终极考验 阶段3 (终极提问) -->
+    <div id="stage-4" class="hidden">
+        <h1>❓ 终极考验 (3/3)：最后的确认</h1>
+        <p>锁全部打开了！宝箱里睡着一个小家伙。</p>
+        
+        <h2 style="color: #c2185b; margin: 30px 0;">“请问是什么动物？”</h2>
+
+        <input type="text" id="ans-stage4" class="general-input" placeholder="输入它的名字">
+        <div class="error-msg" id="error-4">它还在睡觉，好像名字不太对哦~</div>
+        <button onclick="checkStage4()">唤醒它！</button>
+    </div>
+
+    <!-- 最终通关：终极奖励与告白 -->
+    <div id="reward-final" class="hidden">
+        <h1>🐻 寻宝成功！</h1>
+        
+        <!-- 嘉俊，这里放你拍的礼物小熊照片 -->
+        <img src="gift_bear.jpg" alt="终极礼物" class="gift-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'280\'><rect width=\'280\' height=\'280\' fill=\'%23ffb6c1\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'20\'>小棕熊礼物实拍图</text></svg>'">
+        
+        <p style="font-size: 18px;">叮！恭喜解锁700天终极奖励：<br><strong>【玩偶小棕熊】</strong>！</p>
+        <p>在过去的700天里，有你的每一天都闪闪发光。<br>未来的日子，我和这只小棕熊会一直陪着你，保护你。</p>
+        
+        <p style="color: #ff4081; font-weight: bold; font-size: 24px; margin: 30px 0;">黄雨丝，我爱你宝贝！❤️</p>
+        
+        <p style="font-size: 14px; color: #888;">— 永远爱你的 李嘉俊 —</p>
+    </div>
+</div>
+
+<script>
+    // ==========================================
+    // ⚙️ 嘉俊，请在这里设置你所有的密码！！！
+    // ==========================================
+    
+    // 【第一关】三只神兽的数字密码
+    const PWD_YANG = "123";  
+    const PWD_GOU  = "520";  
+    const PWD_HU   = "700";  
+
+    // 【第二关】神秘图纸的4位数字密码
+    const PWD_BEAR_NUM = "1314"; 
+
+    // 【第三关】线下互动获得的4字密码
+    const PWD_ACTION = "超级爱你"; 
+
+    // 【第四关】终极提问的允许答案（包含其中一个词即可通过）
+    const VALID_BEAR_NAMES =['小棕熊', '棕熊', '小熊', '熊熊', '熊'];
+
+    // ==========================================
+
+    function nextStage(currentId, nextId) {
+        document.getElementById(currentId).classList.add('hidden');
+        document.getElementById(nextId).classList.remove('hidden');
+    }
+
+    function checkStage1() {
+        let ansYang = document.getElementById('ans-yang').value.trim();
+        let ansGou = document.getElementById('ans-gou').value.trim();
+        let ansHu = document.getElementById('ans-hu').value.trim();
+        
+        if (ansYang === PWD_YANG && ansGou === PWD_GOU && ansHu === PWD_HU) {
+            document.getElementById('error-1').style.display = 'none';
+            nextStage('stage-1', 'reward-1');
+        } else {
+            document.getElementById('error-1').style.display = 'block';
+        }
+    }
+
+    function checkStage2() {
+        let ans = document.getElementById('ans-stage2').value.trim();
+        if (ans === PWD_BEAR_NUM) {
+            document.getElementById('error-2').style.display = 'none';
+            nextStage('stage-2', 'stage-3');
+        } else {
+            document.getElementById('error-2').style.display = 'block';
+        }
+    }
+
+    function checkStage3() {
+        let ans = document.getElementById('ans-stage3').value.trim();
+        if (ans === PWD_ACTION) {
+            document.getElementById('error-3').style.display = 'none';
+            nextStage('stage-3', 'stage-4');
+        } else {
+            document.getElementById('error-3').style.display = 'block';
+        }
+    }
+
+    function checkStage4() {
+        let ans = document.getElementById('ans-stage4').value.trim();
+        let isCorrect = VALID_BEAR_NAMES.some(valid => ans.includes(valid));
+
+        if (isCorrect) {
+            document.getElementById('error-4').style.display = 'none';
+            nextStage('stage-4', 'reward-final');
+        } else {
+            document.getElementById('error-4').style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>
