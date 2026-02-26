@@ -132,7 +132,8 @@
         
         <div class="puzzle-item">
             <img src="riddle_yang.jpg" alt="小羊谜题" class="riddle-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'150\'><rect width=\'280\' height=\'150\' fill=\'%23ffb6c1\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'20\'>小羊谜题图</text></svg>'">
-            <input type="number" id="ans-yang" placeholder="请输入密码">
+            <!-- 【已修复】：去掉了type="number"，改为了type="text" -->
+            <input type="text" id="ans-yang" placeholder="请输入密码" autocomplete="off">
         </div>
         
         <div class="error-msg" id="error-1-1">密码不对哦，再仔细算算看！</div>
@@ -146,7 +147,8 @@
         
         <div class="puzzle-item">
             <img src="riddle_gou.jpg" alt="小狗谜题" class="riddle-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'150\'><rect width=\'280\' height=\'150\' fill=\'%23ffb6c1\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'20\'>小狗谜题图</text></svg>'">
-            <input type="number" id="ans-gou" placeholder="请输入密码">
+            <!-- 【已修复】：改为了type="text" -->
+            <input type="text" id="ans-gou" placeholder="请输入密码" autocomplete="off">
         </div>
 
         <div class="error-msg" id="error-1-2">不对哦，这只小狗在摇头呢~</div>
@@ -160,7 +162,8 @@
         
         <div class="puzzle-item">
             <img src="riddle_hu.jpg" alt="小虎谜题" class="riddle-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'150\'><rect width=\'280\' height=\'150\' fill=\'%23ffb6c1\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'20\'>小虎谜题图</text></svg>'">
-            <input type="number" id="ans-hu" placeholder="请输入密码">
+            <!-- 【已修复】：改为了type="text" -->
+            <input type="text" id="ans-hu" placeholder="请输入密码" autocomplete="off">
         </div>
 
         <div class="error-msg" id="error-1-3">哎呀，差一点点就打开了，再看看！</div>
@@ -183,7 +186,8 @@
         
         <div class="puzzle-item">
             <img src="riddle_bear.jpg" alt="神秘图纸" class="riddle-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'150\'><rect width=\'280\' height=\'150\' fill=\'%23ffb6c1\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'20\'>这里放终极谜题图</text></svg>'">
-            <input type="number" id="ans-stage2" placeholder="输入4位数字" maxlength="4">
+            <!-- 【已修复】：改为了type="text"，这样后面的maxlength才会生效 -->
+            <input type="text" id="ans-stage2" placeholder="输入4位数字" maxlength="4" autocomplete="off">
         </div>
 
         <div class="error-msg" id="error-2">密码不对哦，再观察一下图纸~</div>
@@ -200,7 +204,7 @@
             请放下手机，去给面前的李嘉俊一个大大的拥抱，并对他说“七百天快乐”。他会偷偷把四字密码告诉你哦！
         </div>
 
-        <input type="text" id="ans-stage3" class="general-input" placeholder="请输入四字密码" maxlength="4">
+        <input type="text" id="ans-stage3" class="general-input" placeholder="请输入四字密码" maxlength="4" autocomplete="off">
         <div class="error-msg" id="error-3">密码不对哦，是不是任务没完成到位呀？</div>
         <button onclick="checkStage3()">解锁指纹锁</button>
     </div>
@@ -212,7 +216,7 @@
         
         <h2 style="color: #c2185b; margin: 30px 0;">“请问是什么动物？”</h2>
 
-        <input type="text" id="ans-stage4" class="general-input" placeholder="输入它的名字">
+        <input type="text" id="ans-stage4" class="general-input" placeholder="输入它的名字" autocomplete="off">
         <div class="error-msg" id="error-4">它还在睡觉，好像名字不太对哦~</div>
         <button onclick="checkStage4()">唤醒它！</button>
     </div>
@@ -326,4 +330,3 @@
 
 </body>
 </html>
-
